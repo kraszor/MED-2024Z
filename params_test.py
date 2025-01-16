@@ -28,14 +28,14 @@ def main(
 
 
 if __name__ == "__main__":
-    file_name = "zoo"
-    sample_size = 0.33
-    k = 7
-    theta = 0.7
-    approximation_function = lambda x: (1 + x) / (1 - x)
+    file_name = "voting_records_cleaned"
+    sample_size = 0.5
+    k = 2
+    theta = 0.73
+    approximation_function = lambda x: (1 - x) / (1 + x)
     drop_outliers = False
     ks = [2, 4, 6, 8, 10]
-    thetas = [0.6, 0.6, 0.7, 0.8]
+    thetas = [0.5, 0.6, 0.7, 0.8]
     approximation_functions = [
         lambda x: (1 - x) / (1 + x),
         lambda x: (1 + x) / (1 - x),

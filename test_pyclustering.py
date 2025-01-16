@@ -12,7 +12,7 @@ encoded_features = features.apply(
     lambda col: encoders[features.columns.get_loc(col.name)].fit_transform(col)
 )
 numeric_data = encoded_features.values.tolist()
-# print(numeric_data)
+
 rock_instance = rock(
     data=numeric_data,
     number_clusters=2,
@@ -23,7 +23,6 @@ rock_instance = rock(
 rock_instance.process()
 clusters = rock_instance.get_clusters()
 
-# print("Clusters:", clusters)
 visualizer = cluster_visualizer()
 visualizer.append_clusters(clusters, numeric_data)
 visualizer.show()

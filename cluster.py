@@ -14,29 +14,6 @@ class Cluster:
     def length(self):
         return len(self.points)
 
-    # def build_local_heap(
-    #     self, clusters: list, links: np.ndarray, approximation_function, theta: float
-    # ) -> None:
-    #     normalization_factor = get_normalization_factor(
-    #         approximation_function=approximation_function, theta=theta
-    #     )
-
-    #     self.heap = [
-    #         (
-    #             goodness_measure(
-    #                 cluster_1=self,
-    #                 cluster_2=cluster,
-    #                 adjacency_matrix=links,
-    #                 normalization_factor=normalization_factor,
-    #             ),
-    #             cluster,
-    #         )
-    #         for cluster in clusters
-    #         if cluster.idx != self.idx
-    #     ]
-    #     self.heap = [item for item in self.heap if item[0] > 0]
-    #     self.heap.sort(reverse=True, key=lambda x: x[0])
-
     def build_local_heap(
         self, clusters: list, links: np.ndarray, approximation_function, theta: float
     ) -> None:

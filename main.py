@@ -1,6 +1,7 @@
 from data import InputData
 from rock import RockAlgorithm
 from utils import save_data_to_csv
+import time
 
 
 def main(file_name, sample_size, k, theta, approximation_function, drop_outliers):
@@ -17,19 +18,16 @@ def main(file_name, sample_size, k, theta, approximation_function, drop_outliers
     )
 
     rock.run()
-    # rock.collect_results()
-    # df = rock.get_rock_output(my_data)
-    # print(df.head())
-    # save_data_to_csv(df, f"output_{file_name}")
 
 
 if __name__ == "__main__":
-    file_name = "zoo"
-    sample_size = 0.33
-    k = 7
-    theta = 0.7
+    file_name = "voting_records_cleaned"
+    sample_size = 0.5
+    k = 2
+    theta = 0.73
     approximation_function = lambda x: (1 + x) / (1 - x)
     drop_outliers = False
+    start = time.time()
     main(
         file_name=file_name,
         sample_size=sample_size,
@@ -38,3 +36,4 @@ if __name__ == "__main__":
         approximation_function=approximation_function,
         drop_outliers=drop_outliers,
     )
+    print("TIME: ", time.time() - start)

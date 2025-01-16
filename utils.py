@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import pandas as pd
+import time
 
 
 class Point:
@@ -36,7 +37,6 @@ def jaccard_ind(a: list, b: list) -> float:
     try:
         to_return = float(len(intersection)) / len(list_union)
     except ZeroDivisionError:
-        # print(intersection, list_union, to_remove, a, b)
         return 0.0
     return to_return
 
@@ -44,6 +44,7 @@ def jaccard_ind(a: list, b: list) -> float:
 def goodness_measure(
     cluster_1, cluster_2, adjacency_matrix: list, normalization_factor: float
 ) -> float:
+    start = time.time()
     number_links = calc_num_of_links(cluster_1, cluster_2, adjacency_matrix)
     cluster_1_length = cluster_1.length()
     cluster_2_length = cluster_2.length()
@@ -52,7 +53,8 @@ def goodness_measure(
         - cluster_1_length**normalization_factor
         - cluster_2_length**normalization_factor
     )
-    return number_links / devider
+    result = number_links / devider
+    return result
 
 
 def get_normalization_factor(approximation_function, theta: float) -> float:
